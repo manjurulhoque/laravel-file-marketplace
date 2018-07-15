@@ -18,7 +18,7 @@
                     Sign out
                 </a>
 
-                <a href="" class="nav-item">
+                <a href="{{ route('account') }}" class="nav-item">
                     Your account
                 </a>
 
