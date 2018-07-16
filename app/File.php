@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -19,9 +20,62 @@ class File extends Model
         'finished',
     ];
 
+    const APPROVAL_PROPERTIES = [
+        'title',
+        'overview_short',
+        'overview'
+    ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($file) {
+            $file->identifier = uniqid(true);
+        });
+    }
+
     public function getRouteKeyName()
     {
         return 'identifier';
+    }
+
+    public function scopeFinished(Builder $builder)
+    {
+        return $builder->where('finished', true);
+    }
+
+    public function isFree()
+    {
+        return $this->price == 0;
+    }
+
+    protected function currentPropertiesDifferToGiven(array $properties)
+    {
+        return array_only($this->toArray(), self::APPROVAL_PROPERTIES) != $properties;
+    }
+
+    public function needsApproval(array $approvalProperties)
+    {
+        if ($this->currentPropertiesDifferToGiven($approvalProperties)) {
+            return true;
+        }
+
+        if ($this->uploads()->unapproved()->count()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function createApproval(array $approvalProperties)
+    {
+        $this->approvals()->create($approvalProperties);
+    }
+
+    public function approvals()
+    {
+        return $this->hasMany(FileApproval::class);
     }
 
     public function user()
