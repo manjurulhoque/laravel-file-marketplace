@@ -41,7 +41,7 @@ class StoreFileRequest extends FormRequest
     public function messages()
     {
         return [
-            'uploads.exists' => 'Please upload at least one file.'
+            'uploads.exists' => 'Please Upload at least one file.'
         ];
     }
 }

@@ -21,8 +21,8 @@
 
             {{--@if (($uploads = $file->uploads()->unapproved()->get())->count())--}}
                 {{--<strong>Uploads</strong>--}}
-                {{--@foreach ($uploads as $upload)--}}
-                    {{--<p>{{ $upload->filename }}</p>--}}
+                {{--@foreach ($uploads as $Upload)--}}
+                    {{--<p>{{ $Upload->filename }}</p>--}}
                 {{--@endforeach--}}
             {{--@endif--}}
         </div>
