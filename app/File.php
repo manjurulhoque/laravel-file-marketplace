@@ -2,13 +2,14 @@
 
 namespace App;
 
+use App\Traits\HasApprovals;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class File extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasApprovals;
 
     protected $fillable = [
         'title',

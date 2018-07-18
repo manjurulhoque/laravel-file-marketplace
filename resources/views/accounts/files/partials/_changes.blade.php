@@ -19,12 +19,12 @@
                 <p>{{ $approval->overview }}</p>
             @endif
 
-            {{--@if (($uploads = $file->uploads()->unapproved()->get())->count())--}}
-                {{--<strong>Uploads</strong>--}}
-                {{--@foreach ($uploads as $Upload)--}}
-                    {{--<p>{{ $Upload->filename }}</p>--}}
-                {{--@endforeach--}}
-            {{--@endif--}}
+            @if (($uploads = $file->uploads()->unapproved()->get())->count())
+                <strong>Uploads</strong>
+                @foreach ($uploads as $Upload)
+                    <p>{{ $Upload->filename }}</p>
+                @endforeach
+            @endif
         </div>
     </div>
 </article>
