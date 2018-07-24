@@ -14,13 +14,20 @@
 
         <div class="nav-right nav-menu">
             @if(auth()->check())
-                <a href="#" class="nav-item" onclick="event.preventDefault(); document.getElementById('logout').submit();">
+                <a href="#" class="nav-item"
+                   onclick="event.preventDefault(); document.getElementById('logout').submit();">
                     Sign out
                 </a>
 
                 <a href="{{ route('account') }}" class="nav-item">
                     Your account
                 </a>
+
+                @if(auth()->check() && auth()->user()->hasRole('admin'))
+                    <a href="#" class="nav-item">
+                        Admin
+                    </a>
+                @endrole
 
             @else
                 <a href="{{ route('login') }}" class="nav-item">

@@ -31,4 +31,18 @@ class User extends Authenticatable
     {
         return $this->hasMany(File::class);
     }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'user_role');
+    }
+
+    public function hasRole($role)
+    {
+        if (!$this->roles->contains('name', $role)) {
+            return false;
+        }
+
+        return true;
+    }
 }
