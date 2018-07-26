@@ -14,11 +14,11 @@
                     {{ $file->overview_short }}
                 </h2>
 
-                {{--@if($file->isFree())--}}
-                    {{--@include('files.partials._checkout_form_free', compact('file'))--}}
-                {{--@else--}}
-                    {{--@include('files.partials._checkout_form', compact('file'))--}}
-                {{--@endif--}}
+                @if($file->isFree())
+                    @include('files.partials._checkout_form_free', compact('file'))
+                @else
+                    @include('files.partials._checkout_form', compact('file'))
+                @endif
             </div>
         </div>
     </section>
