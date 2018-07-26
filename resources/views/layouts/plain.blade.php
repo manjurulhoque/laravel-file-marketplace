@@ -4,6 +4,7 @@
     @include('layouts.partials._head')
 </head>
 <body>
+    @yield('content')
     @include('layouts.partials._script')
 </body>
 </html>

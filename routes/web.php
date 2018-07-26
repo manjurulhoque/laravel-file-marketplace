@@ -38,5 +38,7 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'admin'], 'namespac
     });
 });
 
+Route::get('/{file}', 'File\FileController@show')->name('files.show');
+
 Route::post('/{file}/upload', 'Upload\UploadController@store')->name('upload.store');
 Route::delete('/{file}/upload/{upload}', 'Upload\UploadController@destroy')->name('upload.destroy');

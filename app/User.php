@@ -45,4 +45,14 @@ class User extends Authenticatable
 
         return true;
     }
+
+    public function isAdmin()
+    {
+        return $this->hasRole('admin');
+    }
+
+    public function isTheSameAs(User $user)
+    {
+        return $this->id === $user->id;
+    }
 }
