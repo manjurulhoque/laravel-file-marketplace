@@ -24,7 +24,7 @@
                 </a>
 
                 @if(auth()->check() && auth()->user()->hasRole('admin'))
-                    <a href="#" class="nav-item">
+                    <a href="{{ route('admin.index') }}" class="nav-item">
                         Admin
                     </a>
                 @endrole

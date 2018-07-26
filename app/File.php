@@ -88,4 +88,26 @@ class File extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function approve()
+    {
+        $this->updateToBeVisible();
+
+        $this->approveAllUploads();
+    }
+
+    public function updateToBeVisible()
+    {
+        $this->update([
+            'live' => true,
+            'approved' => true,
+        ]);
+    }
+
+    public function approveAllUploads()
+    {
+        $this->uploads()->update([
+            'approved' => true
+        ]);
+    }
 }
