@@ -74,6 +74,19 @@ class File extends Model
         return $this->hasMany(Upload::class);
     }
 
+    public function mergeApprovalProperties()
+    {
+        $this->update(array_only(
+            $this->approvals->first()->toArray(),
+            self::APPROVAL_PROPERTIES
+        ));
+    }
+
+    public function deleteAllApprovals()
+    {
+        $this->approvals()->delete();
+    }
+
     public function createApproval(array $approvalProperties)
     {
         $this->approvals()->create($approvalProperties);
