@@ -110,6 +110,11 @@ class File extends Model
         return $this->hasMany(FileApproval::class);
     }
 
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -135,5 +140,10 @@ class File extends Model
         $this->uploads()->update([
             'approved' => true
         ]);
+    }
+
+    public function calculateCommission()
+    {
+        return (config('filemarket.sales.commission') / 100) * $this->price;
     }
 }

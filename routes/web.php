@@ -38,6 +38,10 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'admin'], 'namespac
     });
 });
 
+Route::group(['prefic' => '/{file}/checkout', 'namespace' => 'Checkout'], function () {
+    Route::post('/free', 'CheckoutController@free')->name('checkout.free');
+});
+
 Route::get('/{file}', 'File\FileController@show')->name('files.show');
 
 Route::post('/{file}/upload', 'Upload\UploadController@store')->name('upload.store');

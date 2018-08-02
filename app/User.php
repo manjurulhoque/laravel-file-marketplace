@@ -32,6 +32,11 @@ class User extends Authenticatable
         return $this->hasMany(File::class);
     }
 
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
+
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'user_role');
