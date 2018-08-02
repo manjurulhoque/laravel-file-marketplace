@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/account/connect', 'Account\MarketplaceConnectController@index')->name('account.connect');
 
 Route::group(['prefix' => '/account', 'middleware' => ['auth'], 'namespace' => 'Account'], function () {
     Route::get('/', 'AccountController@index')->name('account');

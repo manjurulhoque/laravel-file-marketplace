@@ -178,6 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\RoleServiceProvider::class,
         Chumper\Zipper\ZipperServiceProvider::class,
+        App\Providers\ComposerServiceProvider::class,
 
     ],
 
