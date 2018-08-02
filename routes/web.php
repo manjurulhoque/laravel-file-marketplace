@@ -43,6 +43,7 @@ Route::group(['prefic' => '/{file}/checkout', 'namespace' => 'Checkout'], functi
 });
 
 Route::get('/{file}', 'File\FileController@show')->name('files.show');
+Route::get('/{file}/{sale}', 'File\FileDownloadController@show')->name('files.download');
 
 Route::post('/{file}/upload', 'Upload\UploadController@store')->name('upload.store');
 Route::delete('/{file}/upload/{upload}', 'Upload\UploadController@destroy')->name('upload.destroy');
